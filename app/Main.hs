@@ -1,4 +1,5 @@
 module Main (main) where
+import System.Environment
 import Control.Monad.State
 import Control.Monad.Random
 -- import Lib
@@ -107,15 +108,17 @@ updateParameters learningRate backPropagateList hiddenWeights outputWeights hidd
 
 main :: IO ()
 main = do
+    args <- getArgs
+
+    g <- newStdGen
+    g' <- newStdGen
+
     {--
     the neural network will take two input vectors, so we need two hidden weights: one for each input.
     each hidden weight will be randomly initialized to meet the expectation of our optimization algorithm: stochastic gradient descent (SGD)
     randomly initialized weights also help with what is called "symmetry breaking"; when all weights are initialized equally, it can become difficult for them to change independently when training
     research into the topic suggests that small values between 0 and 0.1 make for the best starting weights for SGD
     --}
-    g <- newStdGen
-    g' <- newStdGen
-
     let hidden_weights = [fst $ evalRand randomWeights g, snd $ evalRand randomWeights g]
     let output_weights = [fst $ evalRand randomWeights g', snd $ evalRand randomWeights g']
     let hidden_bias = replicate 2 0.0
@@ -123,5 +126,6 @@ main = do
 
     putStrLn $ "Hidden weights: " ++ show hidden_weights
     putStrLn $ "Output weights: " ++ show output_weights
+    putStrLn $ head args
 
     -- use forM monad for training monad
