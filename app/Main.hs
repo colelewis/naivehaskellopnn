@@ -39,11 +39,6 @@ or = [[0, 0, 0], [0, 1, 1], [1, 0, 1], [1, 1, 1]]
 xor = [[0, 0, 0], [0, 1, 1], [1, 0, 1], [1, 1, 0]]
 nor  = [[0, 0, 1], [0, 1, 0], [1, 0, 0], [1, 1, 0]]
 
--- randomWeights :: IO [Double] 
--- randomWeights = do
---     g <- newStdGen
---     return $ [x | x<-randoms g :: [Double], x < 0.1]
-
 randomWeight :: (RandomGen g) => Rand g Double
 randomWeight = do
   -- When you need random numbers, just call the getRandom* functions
