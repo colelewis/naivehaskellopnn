@@ -112,7 +112,6 @@ main = do
     each hidden weight will be randomly initialized to meet the expectation of our optimization algorithm: stochastic gradient descent (SGD)
     randomly initialized weights also help with what is called "symmetry breaking"; when all weights are initialized equally, it can become difficult for them to change independently when training
     research into the topic suggests that small values between 0 and 0.1 make for the best starting weights for SGD
-    self.hidden_weights = np.array([[np.random.uniform(0, 0.1), np.random.uniform(0, 0.1)]]) # initialize two random weights between 0 and 0.1 (inclusive of 0.1)
     --}
     g <- newStdGen
     g' <- newStdGen
