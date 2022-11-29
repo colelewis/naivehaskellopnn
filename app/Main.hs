@@ -2,7 +2,6 @@ module Main (main) where
 import System.Environment
 import Control.Monad.State
 import Control.Monad.Random
--- import Lib
 
 -- helper functions
 dot :: Num a => [a] -> [a] -> a
@@ -121,6 +120,5 @@ main = do
 
     putStrLn $ "Hidden weights: " ++ show hidden_weights
     putStrLn $ "Output weights: " ++ show output_weights
-    putStrLn $ head args
 
     -- use forM monad for training monad
